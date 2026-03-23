@@ -1,1 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PersonalizaShop | Produtos Únicos</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <h1 class="logo" onclick="app.navigate('home')">Personaliza<span>Shop</span></h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#" onclick="app.navigate('home')">Início</a></li>
+                    <li><a href="#" onclick="app.navigate('catalog')">Catálogo</a></li>
+                    <li><a href="#" onclick="app.navigate('about')">Sobre Nós</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon" onclick="app.navigate('cart')">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </div>
+        </div>
+    </header>
 
+    <main id="main-content">
+        
+        <section id="home" class="page-section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h2>Produtos feitos para você.</h2>
+                    <p>Personalize canecas, camisetas e presentes exclusivos com o seu estilo.</p>
+                    <button class="btn-primary" onclick="app.navigate('catalog')">Ver Produtos</button>
+                </div>
+            </div>
+            <div class="container">
+                <h3 class="section-title">Destaques</h3>
+                <div class="product-grid" id="featured-products"></div>
+            </div>
+            <div class="testimonials container">
+                <h3 class="section-title">O que dizem nossos clientes</h3>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <p>"Comprei uma caneca com o nome do meu cachorro e a qualidade é incrível! Chegou super rápido."</p>
+                        <h4>- Mariana S.</h4>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"A camiseta personalizada ficou exatamente como eu queria. O tecido é ótimo."</p>
+                        <h4>- João P.</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="catalog" class="page-section container">
+            <h2 class="section-title">Nosso Catálogo</h2>
+            <div class="filters">
+                <button class="filter-btn active" onclick="app.filterProducts('todos')">Todos</button>
+                <button class="filter-btn" onclick="app.filterProducts('canecas')">Canecas</button>
+                <button class="filter-btn" onclick="app.filterProducts('vestuario')">Vestuário</button>
+                <button class="filter-btn" onclick="app.filterProducts('acessorios')">Acessórios</button>
+            </div>
+            <div class="product-grid" id="catalog-products"></div>
+        </section>
+
+        <section id="product-detail" class="page-section container">
+            <button class="btn-back" onclick="app.navigate('catalog')"><i class="fas fa-arrow-left"></i> Voltar</button>
+            <div class="detail-container" id="detail-content">
+                </div>
+        </section>
+
+        <section id="cart" class="page-section container">
+            <h2 class="section-title">Seu Carrinho</h2>
+            <div id="cart-items" class="cart-items">
+                </div>
+            <div class="cart-summary">
+                <h3>Total: <span id="cart-total">R$ 0,00</span></h3>
+                <button class="btn-primary" onclick="app.navigate('checkout')" id="btn-checkout">Finalizar Compra</button>
+            </div>
+        </section>
+
+        <section id="checkout" class="page-section container">
+            <h2 class="section-title">Finalizar Pedido</h2>
+            <div class="checkout-container">
+                <form id="checkout-form" onsubmit="app.processCheckout(event)">
+                    <div class="form-group">
+                        <label>Nome Completo</label>
+                        <input type="text" required placeholder="João da Silva">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" required placeholder="joao@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Endereço de Entrega</label>
+                        <textarea required placeholder="Rua, Número, Bairro, CEP"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Método de Pagamento (Simulação)</label>
+                        <select required>
+                            <option value="cartao">Cartão de Crédito</option>
+                            <option value="pix">PIX</option>
+                            <option value="boleto">Boleto Bancário</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%;">Confirmar Pagamento</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="about" class="page-section container">
+            <h2 class="section-title">Nossa História</h2>
+            <div class="about-content">
+                <p>A <strong>PersonalizaShop</strong> nasceu da vontade de transformar objetos do dia a dia em memórias únicas. Acreditamos que um presente personalizado carrega muito mais emoção.</p>
+                <p>Trabalhamos com materiais de alta qualidade e impressão de última geração para garantir que o seu produto, seja uma caneca, camiseta ou acessório, seja perfeito e duradouro.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-col">
+                <h4>PersonalizaShop</h4>
+                <p>Transformando ideias em produtos incríveis.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Links Úteis</h4>
+                <ul>
+                    <li><a href="#" onclick="app.navigate('about')">Sobre Nós</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Trocas e Devoluções</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Siga-nos</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 PersonalizaShop. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
